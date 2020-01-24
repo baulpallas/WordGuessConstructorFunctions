@@ -1,8 +1,10 @@
 var inquirer = require("inquirer");
-let Letter = guess => {
-  this.userGuess = guess;
-  this.correctLetter = "a";
-  this.wrongLetter = "_";
+
+// Constructor function for building letter
+function Letter(userGuess, correctLetter, wrongLetter) {
+  this.userGuess = userGuess;
+  this.correctLetter = correctLetter;
+  this.wrongLetter = wrongLetter;
 
   this.guessRight = () => {
     if (this.userGuess === this.correctLetter) {
@@ -11,23 +13,52 @@ let Letter = guess => {
       console.log(this.wrongLetter);
     }
   };
+}
+
+Letter.prototype.printInfo = function() {
+  console.log(
+    "User Guess: " +
+      this.userGuess +
+      "\n Correct Letter: " +
+      this.correctLetter +
+      "\nWrong Letter: " +
+      this.wrongLetter
+  );
 };
 
-let questions = () => {
+let askQuestions = () => {
   inquirer
     .prompt([
       {
         name: "guess",
         type: "input",
         message: "What is your guess????"
+      },
+      {
+        name: "right",
+        type: "input",
+        message: "insert correct answer"
+      },
+      {
+        name: "wrong",
+        type: "input",
+        message: "other?"
       }
     ])
     .then(answers => {
-      if (answers.guess === "a") {
-        Letter(answers.guess);
+      console.log(answers.guess, answers.right, answers.wrong);
+      let guessedLetter = new Letter(
+        answers.guess,
+        answers.right,
+        answers.wrong
+      );
+      guessedLetter.printInfo();
+      if (answers.guess === answers.right) {
+        // Letter(answers.guess);
         console.log("hello!");
       }
     });
 };
 
-questions();
+askQuestions();
+module.exports = Letter;
