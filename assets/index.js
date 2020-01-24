@@ -5,7 +5,6 @@ const wordArray = ["filter", "split", "pop", "append", "foreach", "slice"];
 
 let num = Math.floor(Math.random() * 5);
 let randomWord = wordArray[num];
-console.log(randomWord);
 let playedWord = new Word(randomWord);
 console.log(playedWord);
 let guessesArray = [];
@@ -19,7 +18,7 @@ let gameLogic = () => {
   }
 };
 
-// gameLogic();
+gameLogic();
 
 Letter.prototype.printInfo = function() {
   console.log(
@@ -46,13 +45,11 @@ function questions() {
     .then(answers => {
       let guessedLetter = new Letter(answers.guess);
       guessedLetter.printInfo();
+      guessedLetter.correctGuess();
       if (answers.guess === this.correctLetter) {
-        console.log("that is correct!");
-        return this.correctLetter;
         // Letter(answers.guess);
       } else {
         lives--;
-        return "_";
       }
     });
 }

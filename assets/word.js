@@ -6,11 +6,17 @@ function Word(word) {
   let letterObj;
   letterArray = word.split("");
   letterArray.forEach(letter => {
-    letterObj = new Letter("a", letter);
+    letterObj = new Letter("_", letter);
     letterObjArray.push(letterObj);
     this.letter = letterObjArray;
   });
 }
+
+Word.prototype.returnWord = function(word) {
+  let playedWord = word;
+  playedWord.correctGuess();
+  playedWord.loopThroughArray();
+};
 
 module.exports = Word;
 
