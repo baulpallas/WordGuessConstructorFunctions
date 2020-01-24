@@ -1,10 +1,5 @@
 const Letter = require("./letter.js");
-const wordArray = ["filter", "split", "pop", "append", "foreach", "slice"];
-
-let num = Math.floor(Math.random() * 5);
-let chosenWord = wordArray[num];
-let wrong = "_";
-// letterArray = chosenWord.split("");
+const wrong = "_";
 
 function Word(word) {
   let letterArray = [];
@@ -12,12 +7,14 @@ function Word(word) {
   let letterObj;
   letterArray = word.split("");
   letterArray.forEach(letter => {
-    letterObj = new Letter("a", letter);
+    letterObj = new Letter("a", letter, wrong);
     letterObjArray.push(letterObj);
   });
+
   console.log(JSON.stringify(letterObjArray) + "line 14");
 }
-Word(chosenWord);
+
+module.exports = Word;
 
 // console.log(letterArray);
 

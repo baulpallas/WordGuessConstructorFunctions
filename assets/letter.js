@@ -26,38 +26,4 @@ Letter.prototype.printInfo = function() {
   );
 };
 
-// let askQuestions = () => {
-//   inquirer
-//     .prompt([
-//       {
-//         name: "guess",
-//         type: "input",
-//         message: "What is your guess????"
-//       },
-//       {
-//         name: "right",
-//         type: "input",
-//         message: "insert correct answer"
-//       },
-//       {
-//         name: "wrong",
-//         type: "input",
-//         message: "other?"
-//       }
-//     ])
-//     .then(answers => {
-//       let guessedLetter = new Letter(
-//         answers.guess,
-//         answers.right,
-//         answers.wrong
-//       );
-//       guessedLetter.printInfo();
-//       if (answers.guess === answers.right) {
-//         // Letter(answers.guess);
-//         console.log("hello!");
-//       }
-//     });
-// };
-
-// askQuestions();
 module.exports = Letter;
