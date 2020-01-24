@@ -1,29 +1,27 @@
-var inquirer = require("inquirer");
-
 // Constructor function for building letter
-function Letter(userGuess, correctLetter, wrongLetter) {
+function Letter(userGuess, correctLetter) {
   this.userGuess = userGuess;
   this.correctLetter = correctLetter;
-  this.wrongLetter = wrongLetter;
 
+  this.guessCorrectly = false;
+  this.wrongLetter = "_";
+
+  // function to see if you guess right?
   this.guessRight = () => {
     if (this.userGuess === this.correctLetter) {
-      console.log(this.correctLetter);
+      this.guessCorrectly = true;
+    }
+  };
+
+  this.isCorrect = answers => {
+    if (answers.guess === this.correctLetter) {
+      console.log("that is correct!");
+      return this.correctLetter;
+      // Letter(answers.guess);
     } else {
-      console.log(this.wrongLetter);
+      return "_";
     }
   };
 }
-
-Letter.prototype.printInfo = function() {
-  console.log(
-    "User Guess: " +
-      this.userGuess +
-      "\n Correct Letter: " +
-      this.correctLetter +
-      "\nWrong Letter: " +
-      this.wrongLetter
-  );
-};
 
 module.exports = Letter;

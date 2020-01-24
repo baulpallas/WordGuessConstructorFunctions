@@ -1,5 +1,4 @@
 const Letter = require("./letter.js");
-const wrong = "_";
 
 function Word(word) {
   let letterArray = [];
@@ -7,11 +6,10 @@ function Word(word) {
   let letterObj;
   letterArray = word.split("");
   letterArray.forEach(letter => {
-    letterObj = new Letter("a", letter, wrong);
+    letterObj = new Letter("a", letter);
     letterObjArray.push(letterObj);
+    this.letter = letterObjArray;
   });
-
-  console.log(JSON.stringify(letterObjArray) + "line 14");
 }
 
 module.exports = Word;
